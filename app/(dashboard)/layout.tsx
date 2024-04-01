@@ -8,7 +8,7 @@ const DashboardLayout = async ({
 }: {
   children: React.ReactNode
 }) => {
-  const apiLimitCount = await getApiLimitCount()  as number;
+  const apiLimitCount = await getApiLimitCount() as number;
   const isPro = await checkSubscription();
 
   return ( 

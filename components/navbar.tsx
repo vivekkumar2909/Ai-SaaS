@@ -5,7 +5,7 @@ import { getApiLimitCount } from "@/lib/api-limit";
 import { checkSubscription } from "@/lib/subscription";
 
 const Navbar = async () => {
-  const apiLimitCount = await getApiLimitCount();
+  const apiLimitCount = await getApiLimitCount() as number;
   const isPro = await checkSubscription();
 
   return ( 
