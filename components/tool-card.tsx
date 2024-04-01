@@ -45,7 +45,7 @@ export const ToolCard = ({
         <CardDescription>{description}</CardDescription>
         {premium && (
           <CardContent className="p-0">
-            <Badge variant="premium" className="uppercase">pro</Badge>
+            <Badge variant="default" className="uppercase">pro</Badge>
           </CardContent>
         )}
       </CardHeader>
