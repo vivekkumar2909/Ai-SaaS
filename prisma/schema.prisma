@@ -4,9 +4,9 @@ generator client {
 }
 
 datasource db {
-  provider = "mysql"
-  url = env("DATABASE_URL")
-
+  provider = "sqlite"
+  // url = env("DATABASE_URL")
+  url = "file:./dev.db"
   relationMode = "prisma"
 }
 
@@ -26,3 +26,21 @@ model UserSubscription {
   stripePriceId          String?   @map(name: "stripe_price_id")
   stripeCurrentPeriodEnd DateTime? @map(name: "stripe_current_period_end")
 }
+
+
+// model UserApiLimit {
+//   id        BigInt   @id @default(dbgenerated("unique_random()")) // Use a sequence for BigInt IDs in CockroachDB
+//   userId    String   @unique
+//   count     Int      @default(0)
+//   createdAt DateTime @default(now())
+//   updatedAt DateTime @updatedAt
+// }
+
+// model UserSubscription {
+//   id                        BigInt   @id @default(autoincrement()) // Use a sequence for BigInt IDs in CockroachDB
+//   userId                    String   @unique
+//   stripeCustomerId          String?  @unique @map(name: "stripe_customer_id")
+//   stripeSubscriptionId      String?  @unique @map(name: "stripe_subscription_id")
+//   stripePriceId             String?  @map(name: "stripe_price_id")
+//   stripeCurrentPeriodEnd    DateTime? @map(name: "stripe_current_period_end")
+// }

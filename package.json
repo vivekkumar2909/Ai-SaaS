@@ -35,6 +35,7 @@
     "lucide-react": "^0.259.0",
     "next": "^14.0.5-canary.13",
     "next-themes": "^0.2.1",
+    "next13-ai-saas": "file:",
     "openai": "^3.3.0",
     "postcss": "8.4.25",
     "react": "18.2.0",
