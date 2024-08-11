@@ -1,17 +1,25 @@
 generator client {
   provider = "prisma-client-js"
-  // previewFeatures = ["mongodb"]
 }
 
+// datasource db {
+//   provider = "sqlite"
+//   // url = env("DATABASE_URL")
+//   url = "file:./dev.db"
+//   relationMode = "prisma"
+// }
+
 datasource db {
-  provider = "sqlite"
-  // url = env("DATABASE_URL")
-  url = "file:./dev.db"
+  provider  = "cockroachdb"
+  url       = env("DATABASE_URL")
+  // directUrl = env("DIRECT_URL")
   relationMode = "prisma"
 }
 
 model UserApiLimit {
-  id        Int     @id @default(autoincrement())
+
+ id        BigInt   @id @default(autoincrement())
+ // Use a sequence for BigInt IDs in CockroachDB
   userId    String   @unique
   count     Int      @default(0)
   createdAt DateTime @default(now())
@@ -19,7 +27,7 @@ model UserApiLimit {
 }
 
 model UserSubscription {
-  id        Int     @id @default(autoincrement())
+   id        BigInt   @id @default(autoincrement())
   userId    String   @unique
   stripeCustomerId       String?   @unique @map(name: "stripe_customer_id")
   stripeSubscriptionId   String?   @unique @map(name: "stripe_subscription_id")
